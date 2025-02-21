@@ -74,11 +74,12 @@ if "page" not in st.session_state:
     st.session_state.page = "Home"
 
 if st.session_state.page == "Home":
-    st.markdown("<div class='navbar'>VisionAid.AI - AI Image Analyzer</div>", unsafe_allow_html=True)
-    st.title("🔍 Welcome to VisionAid.AI")
-    st.image("14086516.jpg", use_container_width=True)
-    st.markdown("### The educational apllication that allows users understand the input images with the availabilty of audio, giving a personalised touch.!")
-    st.markdown('### Created with ♡ By Shreyash Srivastva')
+    st.markdown("<div class='navbar'>VisionAid.ai - AI Image Based Educator</div>", unsafe_allow_html=True)
+    st.title("🔍 Welcome to VisionAid.ai")
+    #st.image("14086516.jpg", width=100)
+    st.markdown("### AI-powered Image Analysis VisualEd Technology!")
+    st.markdown("#### The educational apllication that allows users understand the input images with the availabilty of audio, giving a personalised touch.")
+    st.markdown('#### Created by Shreyash Srivastva for fellow Humans.')
     if st.button("Get Started 🚀"):
         st.session_state.page = "Upload Image"
         
@@ -92,7 +93,7 @@ if st.session_state.page == "Upload Image":
             f.write(uploaded_image.getbuffer())
         
         image = Image.open(image_path)
-        st.image(image, caption="Uploaded Image", use_container_width=True)
+        st.image(image, caption="Uploaded Image", width=300)
         
         with st.spinner("Analyzing image..."):
             gemini_file = gen_ai.upload_file(path=image_path, display_name=os.path.basename(image_path))
