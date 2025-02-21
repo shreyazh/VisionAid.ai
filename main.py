@@ -77,14 +77,13 @@ if st.session_state.page == "Home":
     st.markdown("<div class='navbar'>VisionAid.AI - AI Image Analyzer</div>", unsafe_allow_html=True)
     st.title("🔍 Welcome to VisionAid.AI")
     st.image("14086516.jpg", use_container_width=True)
-    st.markdown("### Discover AI-powered image analysis with cutting-edge technology!")
+    st.markdown("### The educational apllication that allows users understand the input images with the availabilty of audio, giving a personalised touch.!")
+    st.markdown('### Created with ♡ By Shreyash Srivastva')
     if st.button("Get Started 🚀"):
         st.session_state.page = "Upload Image"
         
 
 if st.session_state.page == "Upload Image":
-    st.markdown("<div class='navbar'>VisionAid.AI - AI Image Analyzer</div>", unsafe_allow_html=True)
-    st.title("📸 AI-Powered Image ChatBot")
     uploaded_image = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
     
     if uploaded_image:
