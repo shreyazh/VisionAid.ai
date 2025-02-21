@@ -8,7 +8,7 @@ import re
 from datetime import datetime
 
 # Configure Gemini API
-gen_ai.configure(api_key="your_api_bro")
+gen_ai.configure(api_key="YOUR_API_BRO")
 gemini = gen_ai.GenerativeModel("gemini-1.5-flash")
 
 def strip_markdown(text):
