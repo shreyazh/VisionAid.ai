@@ -69,10 +69,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Navigation
+# Navigation State
 if "page" not in st.session_state:
     st.session_state.page = "Home"
 
+# Home Page
 if st.session_state.page == "Home":
     st.markdown("<div class='navbar'>VisionAid.ai - AI Image Based Educator</div>", unsafe_allow_html=True)
     st.title("🔍 Welcome to VisionAid.ai")
@@ -83,7 +84,7 @@ if st.session_state.page == "Home":
     if st.button("Get Started 🚀"):
         st.session_state.page = "Upload Image"
         
-
+# Code Block to Upload Image
 if st.session_state.page == "Upload Image":
     uploaded_image = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
     
@@ -94,12 +95,14 @@ if st.session_state.page == "Upload Image":
         
         image = Image.open(image_path)
         st.image(image, caption="Uploaded Image", width=300)
-        
+
+        # image analysis
         with st.spinner("Analyzing image..."):
             gemini_file = gen_ai.upload_file(path=image_path, display_name=os.path.basename(image_path))
             response = gemini.generate_content([gemini_file, "Describe this image."])
             description = response.text
-            
+
+        # Results
         st.success("Analysis Complete!")
         st.markdown(f"**AI Description:** {description}")
         st.markdown(text_to_speech(description), unsafe_allow_html=True)
